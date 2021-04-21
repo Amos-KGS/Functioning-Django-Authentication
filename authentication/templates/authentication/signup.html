@@ -1,0 +1,105 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href=" {% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"> 
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+
+{% comment %} {% block title %}Django Authentication System{% endblock  %} {% endcomment %}
+  </head>
+  <body>
+    {% block content  %}
+    <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading" style="color:blue;">Django Authentication </div><hr>
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-light">Home</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Menu 1</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Menu 2</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Menu 3</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Menu 4</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <div class="animate" id="menu-toggle" onclick="myFunction(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+            </div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="/signup/">Sign Up <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login/">Login</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action 1</a>
+                <a class="dropdown-item" href="#">Action 2</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Sub Action 1</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        {% block title %}<br><h3 style="align: center;">Create an Account</h3><hr>{% endblock  %}
+
+        {% load crispy_forms_tags %}
+        <form method="post" class="form-group">
+        {% csrf_token %}
+        {{form|crispy}}
+        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+        </form>
+
+
+      </div> 
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+ <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %} "></script> 
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+  <script>
+    function myFunction(x) {
+    x.classList.toggle("change");
+    }
+    </script>
+    
+    {% endblock  %}
+   
+  </body>
+</html>
