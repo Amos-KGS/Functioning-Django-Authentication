@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django.contrib.staticfiles',
     'authentication.apps.AuthenticationConfig',
-    'blogging.apps.BloggingConfig',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +139,17 @@ LOGIN_REDIRECT_URL = 'profile'
 LOGIN_URL = 'login'
 
 LOGOUT_REDIRECT_URL = 'login'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smtp.gmail.com'
+
+EMAIL_USE_TLS = True
+
+EMAIL_PORT = 587
+
+EMAIL_HOST_USER = 'sintiyoamos@gmail.com'
+
+EMAIL_HOST_PASSWORD = 'rqzlfirdhzkdtlrw'
+
+DEFAULT_FROM_EMAIL = 'Django Devs <noreply@djangodevs.com>'
